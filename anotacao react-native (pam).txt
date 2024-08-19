@@ -1,0 +1,68 @@
+criar projeto
+npx create-expo-app myapp -t
+template - blank(typescript)
+
+iniciar projeto
+npm start
+(dps da pra usar o expo go ou o cabo do celular)
+
+pra colocar style:
+style={{color: 'red'}}
+
+
+style stylesheet:
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+
+pra colocar imagem:
+import "nome" from "caminhoImagem"
+dps
+<Image source={"nome"}></Image>
+
+pra fazer o native reconhecer png:
+criar na pasta raiz o arquivo index.d.ts
+e escrever nele
+declare module '*.png'
+tbm serve pra outras coisa sem ser png
+
+tags
+Text - texto
+TextInput - lugar pra aperta e abrir o teclado
+View - div
+Image - imagem
+
+
+const isActive = false
+  return (
+    <View style={isActive ? styles.containerOn : styles.containerOff}>
+      <Image source={isActive ? ligado : desligado}></Image>
+    </View>
+  );
+
+pra usar estado tem q ter
+import React, {useState} from 'react';
+la na primeira linha do cód
+
+touchable opacity pra tocar
+<TouchableOpacity onPress={handleSymbol}>
+aq dentro fica aonde vai tocar
+</TouchableOpacity>
+
+handleSymbol é a função pra trocar a img e o fundo
+
+const [isActive, setIsActive] = useState(false);
+aqui a variavel q vai usar
+
+  function handleSymbol(){
+    setIsActive((oldValue:boolean) => {
+      return !oldValue
+    })
+  }
+aq a função
+ela pega o valor antigo e retorna o oposto dele

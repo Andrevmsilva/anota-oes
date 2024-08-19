@@ -1,0 +1,82 @@
+@Entity
+@Table(name = "nomeTabela")  nomeTabela = nomeClasse, 1 classe por tabela
+
+@ID - INDICA QUE É CHAVE PRIMARIA
+@GENERATEDVALUE(strategy = GenerationType.IDENTITY) - INDICA QUE TEM AUTO_INCREMENT
+
+
+ALT + INSERT -> GETTER AND SETTER - pra pegar e inserir coisas no banco de dados
+
+ALT + INSERT -> equals() and HashCode - pra ver se a chave primaria é nula
+
+pasta Resources -> application.properties
+escrever:
+#configuração do banco de dados mysql
+spring.jpa.database=MYSQL
+spring.datasource.url=jdbc:mysql://localhost:3306/estoque?createDatabaseIfNotExist=true&useSSl=false&serverTimezone=America/Sao_Paulo
+spring.datasource.username=root
+spring.datasource.password=
+#spring.datasource.driverClassName=com.mysql.jdbc.Driver
+
+#configuração do Hibernate
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=create
+
+Isso é a configuração basica do banco de dados
+
+localhost padrão mysql = 3306 e não é obrigatório colocar se for o padrao
+
+no banco/no intelij
+Bigint  /  Long
+Varchar / String
+Date    / LocalDate
+Decimal / BigDecimal
+
+tabela normal/ComPk -> tabela pé d galinha/ComFk - 1 pra muitos/OneToMany
+tabela pé d galinha/ComFk -> tabela normal/ComPk - muitos pra 1/ManyToOne
+
+a classe no intellij que tem a fk vai ter:
+private "Classedapk" "classedapk"
+junto com @ManyToOne e joinColumn(name = "nome do campo no banco")
+
+e na classe q tem a PK de onde veio a FK vai ter:
+private List <"nomeTabelaDaFk"> = new arraylist<>();
+junto com @OneToMany(mappedBy = "nomeQueColocouLaNaClasseDaFkNoPrivate,o nome q ta cinza") - eu acho
+
+dps fazer getter and setter pra ambos
+
+05/06
+pode trocar pra "update" o "create" la na config do hibernate
+
+extensao banco de dados flyway migration
+
+nova config pra colocar no application properties:
+spring.flyway.baseline-on-migrate=true
+
+criar a pasta
+a pasta vai fica em resources->db->migration
+
+nome arquivo .slq
+V001__Criar_Tabela_Categoria.sql
+V001__"descricao".sql
+
+depois das férias
+
+dentro da pasta estoque mas fora da pasta model
+criou 3 pastas - repositories, controllers e services
+
+cada classe do model tem que ter o seu repository dentro da pasta repositories
+voce vai em repositories e vai criar uma class interface o nome vai ser "nomeClasseRepository"
+exemplo tem uma classe no model chamada Categoria entao o nome da interface vai ser "CategoriaRepository"
+
+na interface vai ter @Repository encima do public interface e na frente do nome do public interface vai ter extends JpaRepository<"nomeClasse", "Tipo">
+
+no tipo em vez de ser int vai ser Integer por exemplo
+
+na services tambem vai ter isso de cria uma java class "nomeClasseService"
+e tem que colocar o @Service
+
+autowired é pra injetar as coisa
+
+tbm vai criar CategoriaController
+colocar @RestController e @RequestMapping("/categorias")

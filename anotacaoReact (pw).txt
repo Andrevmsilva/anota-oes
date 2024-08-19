@@ -1,0 +1,10 @@
+criar
+npm create vite@latest (bom) (cmd)
+
+executar (terminal no vscode)
+npm run dev
+
+depois excluir arquivos css e as imagens nas  pasta public e assets
+e excluir tudo dentro do app.jsx (deixar só a function app e apagar tudo dentro do return dela)
+
+dps ir na main.jsx e apagar o import do index.css
